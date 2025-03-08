@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'project_management_system.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -85,8 +85,18 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '3306',
     }
-}
+}'''
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'railway',
+        'USER': 'root',
+        'PASSWORD': 'KmrEcDugfbuCwrIDSFMWyheQTvsTxsEu',
+        'HOST': 'mainline.proxy.rlwy.net',
+        'PORT': '33466',
+    }
+}
 # Social Authentication Providers
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
