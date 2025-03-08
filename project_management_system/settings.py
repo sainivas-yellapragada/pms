@@ -17,7 +17,7 @@ SECRET_KEY = 'django-insecure-1o!16r*-&q3-%r9!i)prqlua&2hd7py0qawl3taoqq=evo629$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 SITE_ID = 1
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -85,16 +86,16 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '3306',
     }
-}'''
-
+}
+'''
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'railway',
-        'USER': 'root',
-        'PASSWORD': 'KmrEcDugfbuCwrIDSFMWyheQTvsTxsEu',
-        'HOST': 'mainline.proxy.rlwy.net',
-        'PORT': '33466',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',  
+        'USER': 'postgres',
+        'PASSWORD': 'AVsyGYVMqXhnoSYNtcyCHjTSXbHCVvmV',
+        'HOST': 'ballast.proxy.rlwy.net',
+        'PORT': '25998',
     }
 }
 # Social Authentication Providers
@@ -154,8 +155,9 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build')
 
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
