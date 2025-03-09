@@ -1,0 +1,439 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Define the primary color variable */
+:root {
+    --primary-color: #0099ff; /* Default blue, will change to purple for admin */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #25252b;
+}
+
+.container {
+    position: relative;
+    width: 95vw;
+    height: 85vh;
+    max-width: 1000px;
+    max-height: 700px;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 25px var(--primary-color);
+    overflow: hidden;
+    transition: all 0.5s ease; /* Smooth color transition */
+}
+
+/* Pulse animation for container */
+.container.pulse {
+    animation: pulse 0.3s ease-in-out;
+}
+
+.container .form-box {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form-box.Login {
+    left: 0;
+    padding: 0 5vw;
+}
+
+.form-box.Login .animation {
+    transform: translateX(0%);
+    transition: .7s;
+    opacity: 1;
+    transition-delay: calc(.1s * var(--S));
+}
+
+.container.active .form-box.Login .animation {
+    transform: translateX(-120%);
+    opacity: 0;
+    transition-delay: calc(.1s * var(--D));
+}
+
+.form-box.Register {
+    right: 0;
+    padding: 0 7vw;
+}
+
+.form-box.Register .animation {
+    transform: translateX(120%);
+    transition: .7s ease;
+    opacity: 0;
+    filter: blur(10px);
+    transition-delay: calc(.1s * var(--S));
+}
+
+.container.active .form-box.Register .animation {
+    transform: translateX(0%);
+    opacity: 1;
+    filter: blur(0px);
+    transition-delay: calc(.1s * var(--li));
+}
+
+.form-box h2 {
+    font-size: clamp(24px, 4vw, 36px);
+    text-align: center;
+}
+
+.form-box .input-box {
+    position: relative;
+    width: 100%;
+    height: 8vh;
+    margin-top: 3vh;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: clamp(12px, 2vw, 16px);
+    color: #ffffff;
+    font-weight: 600;
+    border-bottom: 2px solid #fff;
+    padding-right: 23px;
+    transition: all 0.5s ease; /* Smooth color transition */
+}
+
+.input-box input:focus,
+.input-box input:valid {
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: clamp(12px, 2vw, 16px);
+    color: #252525;
+    transition: .5s;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+    top: -5px;
+    color: var(--primary-color);
+}
+
+.input-box box-icon {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    font-size: clamp(14px, 2.5vw, 18px);
+    transform: translateY(-50%);
+    color: #fff;
+    transition: all 0.5s ease; /* Smooth color transition */
+}
+
+.input-box input:focus ~ box-icon,
+.input-box input:valid ~ box-icon {
+    color: var(--primary-color);
+}
+
+.btn {
+    position: relative;
+    width: 100%;
+    height: 7vh;
+    background: transparent;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: clamp(12px, 2vw, 16px);
+    font-weight: 600;
+    border: 2px solid var(--primary-color);
+    overflow: hidden;
+    z-index: 1;
+    margin-top: 3vh;
+    transition: all 0.5s ease; /* Smooth color transition */
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    height: 300%;
+    width: 100%;
+    background: linear-gradient(#25252b, var(--primary-color), #25252b, var(--primary-color));
+    top: -100%;
+    left: 0;
+    z-index: -1;
+    transition: all 0.5s ease; /* Smooth color transition */
+}
+
+.btn:hover:before {
+    top: 0;
+}
+
+.regi-link {
+    font-size: clamp(10px, 1.8vw, 14px);
+    text-align: center;
+    margin: 3vh 0 1.5vh;
+    transition: all 0.5s ease; /* Smooth color transition */
+}
+
+.regi-link a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: all 0.5s ease; /* Smooth color transition */
+}
+
+.regi-link a:hover {
+    text-decoration: underline;
+}
+
+.info-content {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.info-content.Login {
+    right: 0;
+    text-align: right;
+    padding: 0 5vw 7vh 15vw;
+}
+
+.info-content.Login .animation {
+    transform: translateX(0);
+    transition: .7s ease;
+    transition-delay: calc(.1s * var(--S));
+    opacity: 1;
+    filter: blur(0px);
+}
+
+.container.active .info-content.Login .animation {
+    transform: translateX(120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition-delay: calc(.1s * var(--D));
+}
+
+.info-content.Register {
+    left: 0;
+    text-align: left;
+    padding: 0 15vw 7vh 5vw;
+    pointer-events: none;
+}
+
+.info-content.Register .animation {
+    transform: translateX(-120%);
+    transition: .7s ease;
+    opacity: 0;
+    filter: blur(10px);
+    transition-delay: calc(.1s * var(--S));
+}
+
+.container.active .info-content.Register .animation {
+    transform: translateX(0%);
+    opacity: 1;
+    filter: blur(0);
+    transition-delay: calc(.1s * var(--li));
+}
+
+.info-content h2 {
+    text-transform: uppercase;
+    font-size: clamp(28px, 5vw, 40px);
+    line-height: 1.3;
+}
+
+.info-content p {
+    font-size: clamp(12px, 2vw, 16px);
+}
+
+.container .curved-shape {
+    position: absolute;
+    right: 0;
+    top: -5px;
+    height: 750px;
+    width: 1000px;
+    background: linear-gradient(45deg, #25252b, var(--primary-color));
+    transform: rotate(10deg) skewY(40deg);
+    transform-origin: bottom right;
+    transition: all 1.5s ease, background 0.5s ease; /* Smooth color transition */
+    transition-delay: 1.6s;
+}
+
+.container.active .curved-shape {
+    transform: rotate(0deg) skewY(0deg);
+    transition-delay: .5s;
+}
+
+.container .curved-shape2 {
+    position: absolute;
+    left: 300px;
+    top: 100%;
+    height: 850px;
+    width: 1000px;
+    background: #25252b;
+    border-top: 3px solid var(--primary-color);
+    transform: rotate(0deg) skewY(0deg);
+    transform-origin: bottom left;
+    transition: all 1.5s ease, border-top 0.5s ease; /* Smooth color transition */
+    transition-delay: .5s;
+}
+
+.container.active .curved-shape2 {
+    transform: rotate(-11deg) skewY(-41deg);
+    transition-delay: 1.2s;
+}
+
+/* Login Type Toggle */
+.login-type {
+    width: 95vw;
+    max-width: 1000px;
+    height: 8vh;
+    max-height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+/* Pulse animation for login-type */
+.login-type.pulse {
+    animation: pulse 0.3s ease-in-out;
+}
+
+.toggle-btn {
+    width: 50%;
+    height: 100%;
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    border-bottom: none;
+    cursor: pointer;
+    font-size: clamp(14px, 2.5vw, 18px);
+    font-weight: 600;
+    transition: all 0.3s ease; /* Smooth color transition */
+}
+
+.toggle-btn.active {
+    background: var(--primary-color);
+}
+
+.toggle-btn:hover {
+    background: var(--primary-color);
+}
+
+/* Social Login Styles */
+.social-login {
+    text-align: center;
+    margin-top: 3vh;
+}
+
+.social-login p {
+    font-size: clamp(10px, 1.8vw, 14px);
+    margin-bottom: 1.5vh;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 2vw;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(30px, 5vw, 45px);
+    height: clamp(30px, 5vw, 45px);
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease; /* Smooth color transition */
+}
+
+.social-btn:hover {
+    background: var(--primary-color);
+}
+
+.social-btn box-icon {
+    font-size: clamp(16px, 3vw, 22px);
+    color: var(--primary-color);
+    transition: all 0.3s ease; /* Smooth color transition */
+}
+
+.social-btn:hover box-icon {
+    color: var(--primary-color);
+}
+
+/* Pulse animation keyframes */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); } /* Slightly larger */
+    100% { transform: scale(1); }
+}
+
+/* Fine-Tuning for Mobile */
+@media (max-width: 480px) {
+    .container {
+        height: 90vh;
+    }
+
+    .form-box.Login {
+        padding: 0 3vw;
+    }
+
+    .form-box.Register {
+        padding: 0 4vw;
+    }
+
+    .info-content.Login {
+        padding: 0 3vw 5vh 10vw;
+    }
+
+    .info-content.Register {
+        padding: 0 10vw 5vh 3vw;
+    }
+
+    .container .curved-shape {
+        height: 120%;
+        width: 140%;
+        top: 0;
+        transform: rotate(10deg) skewY(40deg);
+        transform-origin: bottom right;
+    }
+
+    .container .curved-shape2 {
+        height: 130%;
+        width: 140%;
+        left: 33.33%;
+        top: 100%;
+        transform: rotate(0deg) skewY(0deg);
+    }
+
+    .container.active .curved-shape {
+        transform: rotate(0deg) skewY(0deg);
+    }
+
+    .container.active .curved-shape2 {
+        transform: rotate(-11deg) skewY(-41deg);
+    }
+
+    .login-type {
+        width: 95vw;
+        max-width: 1000px;
+    }
+}

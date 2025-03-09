@@ -1,0 +1,185 @@
+/* General Styles */
+body {
+    background: #f5f5f5;
+    margin: 0;
+    padding: 0;
+      background-image: url("/static/images/bg2.jpg"); /* Replace with your image path */
+      background-attachment: fixed; /* Makes the background image stay fixed */
+      background-position: center; /* Centers the image */
+      background-repeat: no-repeat; /* Prevents image from repeating */
+      background-size: 1900px; /* Scales image to cover entire background */
+  }
+  
+
+#main {
+    transition: margin-left 0.5s;
+    padding: 20px;
+    margin-left: 0;
+    min-height: 100vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+}
+
+header {
+    text-align: left;
+    padding-left: 20px;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: #ffffff;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #ffffff;
+}
+
+/* Menu Button (Hamburger Icon) */
+.menu-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1200;
+    color: rgb(255, 200, 2);
+    background: none;
+    border: none;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: rgb(255, 200, 2);
+}
+
+/* Logout Button */
+.sidebar .logout-btn {
+    position: absolute;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 24px;
+    background-color: rgb(255, 200, 2);
+    color: black;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.sidebar .logout-btn:hover {
+    background-color: #e5b100;
+}
+
+/* Profile Image */
+.profile {
+    position: absolute;
+    bottom: 175px;
+    left: 45%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile img {
+    width: 70px !important;
+    height: 70px !important;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Notification Styles */
+.notification-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.notification-container h2 {
+    font-size: 2rem;
+    color: #f3f3f3;
+    margin-bottom: 20px;
+}
+
+.notifications-wrapper {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1450px;
+    margin: 20px auto;
+    gap: 60px;
+    position: relative;
+}
+
+.task-notifications {
+    width: 650px;
+}
+
+.project-notifications {
+    width: 700px;
+}
+
+.notifications-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 680px;
+    width: 2px;
+    height: calc(100% - 40px);
+    background-color: #ccc;
+    z-index: 1;
+}
+
+.notification {
+    display: flex;
+    align-items: center;
+    padding: 25px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+.bell-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 20px;
+    color: #ffaa00;
+}
+
+.message {
+    flex-grow: 1;
+    font-size: 20px;
+    text-align: left;
+}
